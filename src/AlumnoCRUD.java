@@ -18,11 +18,11 @@ public class AlumnoCRUD {
                 oos.close();
                 fos.close();
             }
-        }catch (IOException e) {
+        } catch (IOException e) {
             System.err.println(e.getMessage());
         }
     }
-    
+
     /*
         Escribe en el fichero un ArrayList de alumnos
      */
@@ -34,7 +34,7 @@ public class AlumnoCRUD {
             oos.flush();
             oos.close();
             fos.close();
-        }catch (IOException e) {
+        } catch (IOException e) {
             System.out.println("Fallo al escribir");
         }
     }
@@ -50,10 +50,16 @@ public class AlumnoCRUD {
             listaAlumnos = (ArrayList<Alumno>) ois.readObject();
             ois.close();
             fis.close();
-        }catch (IOException | ClassNotFoundException e) {
+        } catch (IOException | ClassNotFoundException e) {
             System.out.println("Fallo al leer");
         }
         return listaAlumnos;
+    }
+
+    public void altaAlumno(Alumno alumno) {
+        ArrayList<Alumno> listaAlumno = leerAlumnos();
+        listaAlumno.add(alumno);
+        escribirAlumnos(listaAlumno);
     }
 
 
